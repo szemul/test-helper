@@ -21,7 +21,7 @@ trait ContainerAndConfigBuilderTrait
             $builder->setConfig($config);
         }
 
-        $builder->addConfigBuilders(...$this->getConfigBuilders())
+        $this->container = $builder->addConfigBuilders(...$this->getConfigBuilders())
             ->buildConfig()
             ->addDefinitionProviders(...$this->getDefinitionProviders($builder->getConfig()))
             ->buildContainer();

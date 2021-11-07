@@ -14,7 +14,7 @@ use Szemul\DependencyInjection\Provider\DefinitionProviderInterface;
 class ContainerAndConfigBuilder
 {
     protected bool             $isConfigBuilt = false;
-    protected ?ConfigInterface $config;
+    protected ?ConfigInterface $config        = null;
     /** @var ConfigBuilderInterface[] */
     protected array $configBuilders = [];
     /** @var DefinitionProviderInterface[] */
