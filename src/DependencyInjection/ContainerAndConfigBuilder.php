@@ -7,11 +7,14 @@ use DI\Container;
 use DI\ContainerBuilder;
 use Szemul\Config\Builder\ConfigBuilderInterface;
 use Szemul\Config\Config;
+use Szemul\Config\ConfigInterface;
 use Szemul\Config\Environment\EnvironmentHandler;
 use Szemul\DependencyInjection\Provider\DefinitionProviderInterface;
 
 class ContainerAndConfigBuilder
 {
+    protected bool             $isConfigBuilt = false;
+    protected ?ConfigInterface $config;
     /** @var ConfigBuilderInterface[] */
     protected array $configBuilders = [];
     /** @var DefinitionProviderInterface[] */
@@ -22,6 +25,33 @@ class ContainerAndConfigBuilder
     public function __construct(string ...$envFilePaths)
     {
         $this->envFilePaths = $envFilePaths;
+    }
+
+    /** @return null|array<string,mixed> */
+    public function __debugInfo(): ?array
+    {
+        return [
+            'config'              => null === $this->config ? null : '*** Instance of ' . get_class($this->config),
+            'configBuilders'      => $this->configBuilders,
+            'definitionProviders' => $this->definitionProviders,
+            'envFilePaths'        => $this->envFilePaths,
+        ];
+    }
+
+    public function setConfig(ConfigInterface $config): static
+    {
+        if ($this->isConfigBuilt) {
+            throw new \RuntimeException('Trying to set the config instance after the config was already built');
+        }
+
+        $this->config = $config;
+
+        return $this;
+    }
+
+    public function getConfig(): ?ConfigInterface
+    {
+        return $this->config;
     }
 
     public function addConfigBuilders(ConfigBuilderInterface ...$configBuilders): static
@@ -43,17 +73,17 @@ class ContainerAndConfigBuilder
         return $this->buildContainer();
     }
 
-    public function buildConfig(): Config
+    protected function buildConfig(): void
     {
         $environmentHandler = new EnvironmentHandler(...$this->envFilePaths);
 
-        $config = new Config();
-
-        foreach ($this->configBuilders as $builder) {
-            $builder->build($environmentHandler, $config);
+        if (null === $this->config) {
+            $this->config = new Config();
         }
 
-        return $config;
+        foreach ($this->configBuilders as $builder) {
+            $builder->build($environmentHandler, $this->config);
+        }
     }
 
     protected function buildContainer(): Container

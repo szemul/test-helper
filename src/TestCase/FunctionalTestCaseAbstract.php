@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Szemul\TestHelper\TestCase;
 
 use PHPUnit\Framework\TestCase;
+use Szemul\Config\ConfigInterface;
 use Szemul\TestHelper\Traits\ContainerAndConfigBuilderTrait;
 use Szemul\TestHelper\Traits\JsonApiAssertionTrait;
 use Szemul\TestHelper\Traits\LogHandlerTrait;
@@ -20,8 +21,13 @@ abstract class FunctionalTestCaseAbstract extends TestCase
     {
         parent::setUp();
 
-        $this->setUpContainer(...$this->getEnvPaths());
+        $this->setUpContainer($this->getConfig(), ...$this->getEnvPaths());
         $this->setupLogger();
+    }
+
+    protected function getConfig(): ?ConfigInterface
+    {
+        return null;
     }
 
     /** @return string[] */

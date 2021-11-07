@@ -13,14 +13,16 @@ trait ContainerAndConfigBuilderTrait
 {
     protected Container $container;
 
-    protected function setUpContainer(string ...$envPaths): Container
+    protected function setUpContainer(?ConfigInterface $config, string ...$envPaths): Container
     {
-        $builder = (new ContainerAndConfigBuilder(...$envPaths))
-            ->addConfigBuilders(...$this->getConfigBuilders());
+        $builder = new ContainerAndConfigBuilder(...$envPaths);
 
-        $config = $builder->buildConfig();
+        if (null !== $config) {
+            $builder->setConfig($config);
+        }
 
-        $this->container = $builder->addDefinitionProviders(...$this->getDefinitionProviders($config))
+        $builder->addConfigBuilders(...$this->getConfigBuilders())
+            ->addDefinitionProviders(...$this->getDefinitionProviders($config))
             ->build();
 
         return $this->container;
