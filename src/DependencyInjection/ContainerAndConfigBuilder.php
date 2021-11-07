@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Szemul\TestHelper\Di;
+namespace Szemul\TestHelper\DependencyInjection;
 
 use DI\Container;
 use DI\ContainerBuilder;

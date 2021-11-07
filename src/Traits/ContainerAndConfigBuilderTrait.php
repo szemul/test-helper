@@ -5,7 +5,7 @@ namespace Szemul\TestHelper\Traits;
 
 use DI\Container;
 use Szemul\DependencyInjection\Provider\DefinitionProviderInterface;
-use Szemul\TestHelper\Di\ContainerAndConfigBuilder;
+use Szemul\TestHelper\DependencyInjection\ContainerAndConfigBuilder;
 use Szemul\Config\Builder\ConfigBuilderInterface;
 
 trait ContainerAndConfigBuilderTrait
