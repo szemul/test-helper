@@ -70,6 +70,7 @@ class ContainerAndConfigBuilder
 
     public function build(): Container
     {
+        $this->buildConfig();
         return $this->buildContainer();
     }
 
