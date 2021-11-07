@@ -68,13 +68,7 @@ class ContainerAndConfigBuilder
         return $this;
     }
 
-    public function build(): Container
-    {
-        $this->buildConfig();
-        return $this->buildContainer();
-    }
-
-    protected function buildConfig(): void
+    public function buildConfig(): static
     {
         $environmentHandler = new EnvironmentHandler(...$this->envFilePaths);
 
@@ -85,9 +79,11 @@ class ContainerAndConfigBuilder
         foreach ($this->configBuilders as $builder) {
             $builder->build($environmentHandler, $this->config);
         }
+
+        return $this;
     }
 
-    protected function buildContainer(): Container
+    public function buildContainer(): Container
     {
         $containerBuilder = new ContainerBuilder();
 
