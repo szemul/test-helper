@@ -40,10 +40,10 @@ class ContainerAndConfigBuilder
 
     public function build(): Container
     {
-        return $this->buildContainer($this->buildConfig());
+        return $this->buildContainer();
     }
 
-    protected function buildConfig(): Config
+    public function buildConfig(): Config
     {
         $environmentHandler = new EnvironmentHandler(...$this->envFilePaths);
 
@@ -56,7 +56,7 @@ class ContainerAndConfigBuilder
         return $config;
     }
 
-    protected function buildContainer(Config $config): Container
+    protected function buildContainer(): Container
     {
         $containerBuilder = new ContainerBuilder();
 

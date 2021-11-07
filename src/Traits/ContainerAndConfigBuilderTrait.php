@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Szemul\TestHelper\Traits;
 
 use DI\Container;
+use Szemul\Config\ConfigInterface;
 use Szemul\DependencyInjection\Provider\DefinitionProviderInterface;
 use Szemul\TestHelper\DependencyInjection\ContainerAndConfigBuilder;
 use Szemul\Config\Builder\ConfigBuilderInterface;
@@ -14,9 +15,12 @@ trait ContainerAndConfigBuilderTrait
 
     protected function setUpContainer(string ...$envPaths): Container
     {
-        $this->container = (new ContainerAndConfigBuilder(...$envPaths))
-            ->addConfigBuilders(...$this->getConfigBuilders())
-            ->addDefinitionProviders(...$this->getDefinitionProviders())
+        $builder = (new ContainerAndConfigBuilder(...$envPaths))
+            ->addConfigBuilders(...$this->getConfigBuilders());
+
+        $config = $builder->buildConfig();
+
+        $this->container = $builder->addDefinitionProviders(...$this->getDefinitionProviders($config))
             ->build();
 
         return $this->container;
@@ -31,5 +35,5 @@ trait ContainerAndConfigBuilderTrait
     abstract protected function getConfigBuilders(): array;
 
     /** @return DefinitionProviderInterface[] */
-    abstract protected function getDefinitionProviders(): array;
+    abstract protected function getDefinitionProviders(ConfigInterface $config): array;
 }
