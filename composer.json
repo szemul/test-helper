@@ -1,0 +1,36 @@
+{
+    "name": "szemul/test-helper",
+    "description": "Helper for testing applications using szemul/framework",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "szemul/framework": "^1.0.1",
+        "wmde/psr-log-test-doubles": "^2.2.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0.0",
+        "jetbrains/phpstorm-attributes": "^1.0",
+        "mockery/mockery": "^1.0",
+        "monolog/monolog": "^2.3.2",
+        "phpstan/phpstan": "^1.1.1",
+        "phpunit/phpunit": "^9.5.5",
+        "sentry/sdk": "^3.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Szemul\\TestHelper\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Szemul\\TestHelper\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
