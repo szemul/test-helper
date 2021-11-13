@@ -10,7 +10,10 @@ use Szemul\TestHelper\Helper\ArrayCleanupHelper;
 
 trait JsonApiAssertionTrait
 {
-    /** @param mixed[] $expectedBody */
+    /**
+     * @param mixed[]  $expectedBody
+     * @param string[] $ignoreBodyKeys
+     */
     protected function assertEqualsJsonResponse(
         array $expectedBody,
         ResponseInterface $actual,
@@ -29,6 +32,7 @@ trait JsonApiAssertionTrait
         );
     }
 
+    /** @param array<string,string> $expected */
     protected function assertUnprocessableExceptionParamErrors(
         array $expected,
         HttpUnprocessableEntityException $e,

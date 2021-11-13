@@ -5,7 +5,6 @@ namespace Szemul\TestHelper\Helper;
 
 class ArrayCleanupHelper
 {
-
     /**
      * @param array<string,mixed> $array
      * @param string[]            $keysToRemove
