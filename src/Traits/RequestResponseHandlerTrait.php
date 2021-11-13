@@ -59,7 +59,7 @@ trait RequestResponseHandlerTrait
 
         foreach ($routeArguments as $argumentName => $argumentValue) {
             // @phpstan-ignore-next-line
-            $mock->shouldReceive('getAttribute')
+            $mock->shouldReceive('getArgument')
                 ->with($argumentName)
                 ->andReturn($argumentValue);
         }
