@@ -14,7 +14,7 @@ class ArrayCleanupHelper
      */
     public function removeKeysFromArray(array $array, array $keysToRemove): array
     {
-        foreach (array_intersect(array_keys($array, $keysToRemove)) as $key) {
+        foreach (array_intersect(array_keys($array), $keysToRemove) as $key) {
             unset($array[$key]);
         }
 
