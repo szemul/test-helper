@@ -1,10 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Szemul\TestHelper\TestCase;
 
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ResponseInterface;
 use Szemul\Config\ConfigInterface;
+use Szemul\Framework\Action\ActionAbstract;
 use Szemul\TestHelper\Traits\ContainerAndConfigBuilderTrait;
 use Szemul\TestHelper\Traits\JsonApiAssertionTrait;
 use Szemul\TestHelper\Traits\LogHandlerTrait;
@@ -16,6 +19,9 @@ abstract class FunctionalTestCaseAbstract extends TestCase
     use JsonApiAssertionTrait;
     use LogHandlerTrait;
     use RequestResponseHandlerTrait;
+
+    /** @return string[] */
+    abstract protected function getEnvPaths(): array;
 
     protected function setUp(): void
     {
@@ -30,6 +36,20 @@ abstract class FunctionalTestCaseAbstract extends TestCase
         return null;
     }
 
-    /** @return string[] */
-    abstract protected function getEnvPaths(): array;
+    protected function getAction(string $actionClassName): ActionAbstract
+    {
+        return $this->getContainer()->get($actionClassName);
+    }
+
+    protected function callAction(string $actionClassName, string $method, array $requestBody): ResponseInterface
+    {
+        $action   = $this->getAction($actionClassName);
+        $request  = $this->getRequest($method, '', []);
+        $request  = $request->withParsedBody($requestBody);
+        $response = $action($request, $this->getResponse(), []);
+
+        $response->getBody()->rewind();
+
+        return $response;
+    }
 }

@@ -17,7 +17,8 @@
         "monolog/monolog": "^2.3.2",
         "phpstan/phpstan": "^1.1.1",
         "phpunit/phpunit": "^9.5.5",
-        "sentry/sdk": "^3.1.0"
+        "sentry/sdk": "^3.1.0",
+        "wiremock-php/wiremock-php": "^2.33"
     },
     "autoload": {
         "psr-4": {
