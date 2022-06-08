@@ -7,7 +7,6 @@ namespace Szemul\TestHelper\TestCase;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Szemul\Config\ConfigInterface;
-use Szemul\Framework\Action\ActionAbstract;
 use Szemul\TestHelper\Traits\ContainerAndConfigBuilderTrait;
 use Szemul\TestHelper\Traits\JsonApiAssertionTrait;
 use Szemul\TestHelper\Traits\LogHandlerTrait;
@@ -36,14 +35,17 @@ abstract class FunctionalTestCaseAbstract extends TestCase
         return null;
     }
 
-    protected function getAction(string $actionClassName): ActionAbstract
+    protected function getObjectFromContainer(string $actionClassName): mixed
     {
         return $this->getContainer()->get($actionClassName);
     }
 
+    /**
+     * @param mixed[] $requestBody
+     */
     protected function callAction(string $actionClassName, string $method, array $requestBody): ResponseInterface
     {
-        $action   = $this->getAction($actionClassName);
+        $action   = $this->getObjectFromContainer($actionClassName);
         $request  = $this->getRequest($method, '', []);
         $request  = $request->withParsedBody($requestBody);
         $response = $action($request, $this->getResponse(), []);
