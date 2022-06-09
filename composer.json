@@ -8,7 +8,8 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "szemul/framework": "^1.0.1",
-        "wmde/psr-log-test-doubles": "^2.2.0 | ^v3.2.0"
+        "wmde/psr-log-test-doubles": "^2.2.0 | ^v3.2.0",
+        "wiremock-php/wiremock-php": "^2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0.0",
