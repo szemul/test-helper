@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Szemul\TestHelper\Database;
@@ -25,9 +26,9 @@ class DatabaseHandler
     }
 
     /** @param array<string,int|float|string> $row */
-    public function createRow(string $table, array $row): void
+    public function createRow(string $table, array $row): string
     {
-        $sets  = [];
+        $sets = [];
 
         foreach ($row as $key => $value) {
             $sets[] = $key . '= :' . $key;
@@ -41,6 +42,8 @@ class DatabaseHandler
         ';
 
         $this->runQuery($query, $row);
+
+        return $this->factory->getReadWrite()->lastInsertId();
     }
 
     /** @param array<string,int|float|string>[] $rows */
