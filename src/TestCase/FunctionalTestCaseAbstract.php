@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Szemul\Config\ConfigInterface;
 use Szemul\TestHelper\Traits\ContainerAndConfigBuilderTrait;
+use Szemul\TestHelper\Traits\ErrorHandlerTrait;
 use Szemul\TestHelper\Traits\JsonApiAssertionTrait;
 use Szemul\TestHelper\Traits\LogHandlerTrait;
 use Szemul\TestHelper\Traits\RequestResponseHandlerTrait;
@@ -18,6 +19,7 @@ abstract class FunctionalTestCaseAbstract extends TestCase
     use JsonApiAssertionTrait;
     use LogHandlerTrait;
     use RequestResponseHandlerTrait;
+    use ErrorHandlerTrait;
 
     /** @return string[] */
     abstract protected function getEnvPaths(): array;
@@ -28,6 +30,7 @@ abstract class FunctionalTestCaseAbstract extends TestCase
 
         $this->setUpContainer($this->getConfig(), ...$this->getEnvPaths());
         $this->setupLogger();
+        $this->mockErrorHandler($this->container);
     }
 
     protected function getConfig(): ?ConfigInterface
