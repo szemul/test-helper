@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a89cd5b74f078075482ff92e40f270d",
+    "content-hash": "35de51e5cf18ff7091c7b863fe7a82de",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -2640,16 +2640,16 @@
         },
         {
             "name": "szemul/error-handler",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/szemul/error-handler.git",
-                "reference": "a28fd025f58d30f30fc3d6ef652429783137436c"
+                "reference": "42e8b7cf8457a04bb5b1b1ccb911bf37eac05f2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/szemul/error-handler/zipball/a28fd025f58d30f30fc3d6ef652429783137436c",
-                "reference": "a28fd025f58d30f30fc3d6ef652429783137436c",
+                "url": "https://api.github.com/repos/szemul/error-handler/zipball/42e8b7cf8457a04bb5b1b1ccb911bf37eac05f2a",
+                "reference": "42e8b7cf8457a04bb5b1b1ccb911bf37eac05f2a",
                 "shasum": ""
             },
             "require": {
@@ -2677,9 +2677,9 @@
             "description": "Simple extensible error handler",
             "support": {
                 "issues": "https://github.com/szemul/error-handler/issues",
-                "source": "https://github.com/szemul/error-handler/tree/2.0.1"
+                "source": "https://github.com/szemul/error-handler/tree/2.0.2"
             },
-            "time": "2022-05-12T10:43:16+00:00"
+            "time": "2023-01-16T20:30:24+00:00"
         },
         {
             "name": "szemul/framework",
