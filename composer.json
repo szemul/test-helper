@@ -8,7 +8,7 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "szemul/error-handler": "^2.0.2",
-        "szemul/framework": "^1.0.1",
+        "szemul/framework": "^1.0.1|^2.0.0",
         "wiremock-php/wiremock-php": "^2",
         "wmde/psr-log-test-doubles": "^2.2.0 | ^v3.2.0"
     },
@@ -33,6 +33,7 @@
     },
     "config": {
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": false
     }
 }
