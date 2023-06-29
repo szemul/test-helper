@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc0697aa010cef516b5b0680aa9de369",
+    "content-hash": "28083beefa43ca1fb6242d56f1b13f5a",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -2356,16 +2356,16 @@
         },
         {
             "name": "szemul/framework",
-            "version": "1.1.7",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/szemul/framework.git",
-                "reference": "4f5aebbd484820e89f89c7d1f3526c35975ceb81"
+                "reference": "0e7c38414b9662c4806d09ec168526a838afc4bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/szemul/framework/zipball/4f5aebbd484820e89f89c7d1f3526c35975ceb81",
-                "reference": "4f5aebbd484820e89f89c7d1f3526c35975ceb81",
+                "url": "https://api.github.com/repos/szemul/framework/zipball/0e7c38414b9662c4806d09ec168526a838afc4bf",
+                "reference": "0e7c38414b9662c4806d09ec168526a838afc4bf",
                 "shasum": ""
             },
             "require": {
@@ -2377,7 +2377,7 @@
                 "php-di/php-di": "^6.3",
                 "slim/psr7": "^1.4",
                 "slim/slim": "^4.8",
-                "symfony/console": "^5.1.11",
+                "symfony/console": "^5|^6",
                 "szemul/config": "^1.0.1",
                 "szemul/database": "^1.0.3|^2.0.0|^3.0.0",
                 "szemul/debugger": "^v1.0.1",
@@ -2385,7 +2385,7 @@
                 "szemul/error-handler": "^2.0.0",
                 "szemul/helper": "^1.2.0",
                 "szemul/not-set-value": "^1.0.0|^2.0.0",
-                "szemul/slim-error-handler-bridge": "^1.0.0|^2.0.0"
+                "szemul/slim-error-handler-bridge": "^1.0.0|^2.0.0|^3.0.0"
             },
             "require-dev": {
                 "consolidation/robo": "^3.0.5",
@@ -2420,9 +2420,9 @@
             "description": "Lightweight framework based on Slim 4 and Symfony console",
             "support": {
                 "issues": "https://github.com/szemul/framework/issues",
-                "source": "https://github.com/szemul/framework/tree/1.1.7"
+                "source": "https://github.com/szemul/framework/tree/2.0.0"
             },
-            "time": "2022-10-24T12:04:47+00:00"
+            "time": "2023-06-29T11:19:48+00:00"
         },
         {
             "name": "szemul/helper",
