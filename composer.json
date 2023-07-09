@@ -8,7 +8,7 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "fig/http-message-util": "^1.0",
-        "php-di/php-di": "^6.0",
+        "php-di/php-di": "^6.0|^7.0",
         "slim/psr7": "^1.0.0",
         "szemul/database": "^1.0|^2.0|^3.0",
         "szemul/dependency-injection": "^1.0",
