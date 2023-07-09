@@ -4,13 +4,20 @@
     "license": "MIT",
     "minimum-stability": "stable",
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "ext-json": "*",
         "ext-pdo": "*",
-        "szemul/error-handler": "^2.0.2",
-        "szemul/framework": "^1.0.1|^2.0.0",
-        "wiremock-php/wiremock-php": "^2",
-        "wmde/psr-log-test-doubles": "^2.2.0 | ^v3.2.0"
+        "fig/http-message-util": "^1.0",
+        "php-di/php-di": "^6.0",
+        "slim/psr7": "^1.0.0",
+        "szemul/database": "^1.0|^2.0|^3.0",
+        "szemul/dependency-injection": "^1.0",
+        "szemul/error-handler": "^2.0",
+        "szemul/router": "^1.0",
+        "szemul/slim-app-bootstrap": "^1.0",
+        "szemul/slim-error-handler-bridge": "^1.0|^2.0|^3.0|^4.0",
+        "wiremock-php/wiremock-php": "^2.0",
+        "wmde/psr-log-test-doubles": "^2.2 | ^v3.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0.0",

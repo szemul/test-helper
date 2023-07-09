@@ -6,14 +6,15 @@ namespace Szemul\TestHelper\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
-use Szemul\Framework\Router\RouterInterface;
+use Szemul\Router\RouterInterface;
+use Szemul\SlimErrorHandlerBridge\ErrorHandlerFactory\ErrorHandlerFactory;
 use Szemul\TestHelper\Bootstrap\TestBootstrap;
 
 abstract class FullFunctionalTestCaseAbstract extends FunctionalTestCaseAbstract
 {
     protected function processRequest(ServerRequestInterface $request): ResponseInterface
     {
-        $appBootstrapper = new TestBootstrap($request, $this->getRouter(), ...$this->getMiddlewares());
+        $appBootstrapper = new TestBootstrap($request, $this->getRouter(), new ErrorHandlerFactory(), ...$this->getMiddlewares());
 
         $appBootstrapper($this->container);
 

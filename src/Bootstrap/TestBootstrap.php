@@ -7,8 +7,9 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
-use Szemul\Framework\Bootstrap\AppBootstrap;
-use Szemul\Framework\Router\RouterInterface;
+use Szemul\Router\RouterInterface;
+use Szemul\SlimAppBootstrap\Bootstrap\AppBootstrap;
+use Szemul\SlimAppBootstrap\ErrorHandlerFactory\ErrorHandlerFactoryInterface;
 
 class TestBootstrap extends AppBootstrap
 {
@@ -17,9 +18,10 @@ class TestBootstrap extends AppBootstrap
     public function __construct(
         private ServerRequestInterface $request,
         ?RouterInterface $router = null,
+        ?ErrorHandlerFactoryInterface $errorHandlerFactory = null,
         MiddlewareInterface ...$middlewares,
     ) {
-        parent::__construct($router, ...$middlewares);
+        parent::__construct($router, $errorHandlerFactory, ...$middlewares);
     }
 
     public function __invoke(ContainerInterface $container): void
@@ -27,8 +29,8 @@ class TestBootstrap extends AppBootstrap
         $app = $this->setupApp($container);
 
         $this->addMiddlewares($app);
-
-        $this->addSystemMiddlewares($app, $container);
+        $app->addRoutingMiddleware();
+        $this->addErrorMiddleware($app, $container);
 
         $this->setRoutes($app);
 
