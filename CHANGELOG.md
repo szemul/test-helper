@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.0.1] - 2023-07-09
+
+### Changed
+
+- Allow `php-di/php-di` v7
+
+## [2.0.0] - 2023-07-09
+
+### Changed
+
+- Use separated szemul libs
+
 ## [1.2.0] - 2023-06-30
 
 ### Changed
