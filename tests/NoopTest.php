@@ -9,6 +9,6 @@ class NoopTest extends TestCase
 {
     public function testNoop(): void
     {
-        $this->assertTrue(true);
+        $this->assertTrue(true); // @phpstan-ignore-line
     }
 }

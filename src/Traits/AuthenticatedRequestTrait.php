@@ -5,7 +5,7 @@ namespace Szemul\TestHelper\Traits;
 
 use Psr\Http\Message\ServerRequestInterface;
 
-trait AuthenticatedRequestTrait
+trait AuthenticatedRequestTrait //@phpstan-ignore-line
 {
     /** @param array<string,string> $query */
     protected function getAuthenticatedRequest(

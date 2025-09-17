@@ -6,6 +6,7 @@ namespace Szemul\TestHelper\Traits;
 use Mockery;
 use Mockery\LegacyMockInterface;
 use Mockery\MockInterface;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Factory\ServerRequestCreatorFactory;
@@ -47,12 +48,16 @@ trait RequestResponseHandlerTrait
         return new Response();
     }
 
+    /** @param Route<ContainerInterface> $route */
     protected function addRouteToRequest(ServerRequestInterface $serverRequest, Route $route): ServerRequestInterface
     {
         return $serverRequest->withAttribute('__route__', $route);
     }
 
-    /** @param array<string,string|int|float|null> $routeArguments */
+    /**
+     * @param array<string,string|int|float|null> $routeArguments
+     * @return Route<ContainerInterface>|MockInterface|LegacyMockInterface
+     */
     protected function getRouteMock(array $routeArguments = []): Route|MockInterface|LegacyMockInterface
     {
         $mock = Mockery::mock(Route::class);

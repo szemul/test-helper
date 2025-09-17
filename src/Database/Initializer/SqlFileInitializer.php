@@ -7,14 +7,17 @@ use Szemul\Database\Config\MysqlConfig;
 
 class SqlFileInitializer implements InitializerInterface
 {
-    public function __construct(protected string $sqlFilePath, protected MysqlConfig $config)
-    {
+    public function __construct(
+        protected string $sqlFilePath,
+        protected MysqlConfig $config,
+        protected string $mysqlBinaryName = 'mysql',
+    ) {
     }
 
     public function initialize(): void
     {
         $command = implode(' ', [
-            'mysql',
+            escapeshellarg($this->mysqlBinaryName),
             '-h',
             escapeshellarg($this->config->getAccess()->getHost()),
             '-P',
@@ -28,7 +31,7 @@ class SqlFileInitializer implements InitializerInterface
 
         exec($command);
         $command = implode(' ', [
-            'mysql',
+            escapeshellarg($this->mysqlBinaryName),
             '-h',
             escapeshellarg($this->config->getAccess()->getHost()),
             '-P',
